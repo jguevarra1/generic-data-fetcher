@@ -1,0 +1,54 @@
+plugins
+        {
+    id("groovy")
+    id("com.github.johnrengelman.shadow") version "7.1.1"
+    id("io.micronaut.application") version "3.2.2"
+}
+
+version = "0.1"
+group = "com.datafetcher"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("io.micronaut.groovy:micronaut-runtime-groovy")
+    implementation("jakarta.annotation:jakarta.annotation-api")
+    compileOnly("io.micronaut:micronaut-http-validation")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    implementation("io.micronaut:micronaut-validation")
+    implementation("com.google.guava:guava:31.0.1-jre")
+    implementation("commons-io:commons-io:2.11.0")
+    implementation("org.jsoup:jsoup:1.14.3")
+    implementation("org.apache.commons:commons-csv:1.9.0")
+    implementation 'com.github.albfernandez:juniversalchardet:2.4.0'
+    annotationProcessor("io.micronaut:micronaut-inject-java:3.3.4")
+    runtimeOnly("io.micronaut:micronaut-core:3.3.4")
+    implementation ("org.codehaus.groovy:groovy-json")
+    implementation("io.micronaut.beanvalidation:micronaut-hibernate-validator")
+    // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-project-gradle.html
+    // added for s3 implementation
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.1000')
+    implementation 'com.amazonaws:aws-java-sdk-s3'
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.4'
+    implementation 'com.google.api-client:google-api-client:1.33.0'
+    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.32.1'
+    implementation 'com.google.apis:google-api-services-drive:v3-rev20211107-1.32.1'
+}
+
+application {
+    mainClass.set("com.datafetcher.Application")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("spock2")
+    processing {
+        incremental(true)
+        annotations("com.datafetcher.*")
+    }
+}
