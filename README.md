@@ -1,5 +1,16 @@
 # Generic Data Fetcher
 
+## Sections
+1. [Project Description](#project-description)<br>
+2. [Starting the Application](#starting-the-application)
+3. [Viewing the Website](#viewing-the-website)
+4. [Form Input](#form-input)
+-----
+
+
+
+## Project Description
+
 This application downloads a file given a URL to local disk, converts it into a CSV-formatted UTF-8 encoded file, and uploads it to a cloud storage service of choice. 
 
 Currently supported file types:
@@ -11,6 +22,8 @@ Currently supported file types:
 Currently supported cloud storage services:
 1. Google Drive
 2. Amazon S3
+
+------
 
 ## Starting the Application
 
@@ -36,6 +49,8 @@ The application will need the following to be installed:
   b. Open the repository in an IDE that supports Groovy and Micronaut (such as IntelliJ) and run the application in there
 5. Open up a web browser and go to http://localhost:3000/
 
+----
+
 ## Viewing the Website
 
 The website will take you to the main dashboard. The Total Success, Total Updating, and Total Error describe the total amount of jobs that were successfully converted and uploaded, are in the process of being converted and uploaded, or failed somewhere along the way. 
@@ -50,7 +65,14 @@ It will take you to the page that allows you to fill in form components.
 
 <img width="1679" alt="Screen Shot 2022-05-14 at 12 03 21 PM" src="https://user-images.githubusercontent.com/73259113/168445155-15ea0e0b-971d-4fec-938c-690ee2a703ab.png">
 
-The form will now need to be filled out. 
+The form will now need to be filled out.
+
+-------
+
+## Form Input
+
+The application requires many different inputs as a part of each unique job configuration. 
+The required inputs are listed below. 
 
 ### Job Name
 This is the name of the job. This is also the name of your file that will be uploaded to the cloud storage system of choice.
@@ -63,7 +85,7 @@ The file type is a drop down menu of what file types are currently supported for
 
 All file types will require the URL to the file, the headers of the columns (if not already provided), and the path of the location you want the files to be saved locally. You will also need to know the information about the file ahead of time, so some files may need to be downloaded and looked through in order to gather their information (such as the delimiter of a file, its headers, etc).
 
-If headers are filled out, they should be separated entered one at a time and separated by commas. For example: these, are, headers
+If headers are filled out, they should be separated entered one at a time and separated by commas.<br><strong>For example: these, are, headers</strong>
 
 ### Zip Files & Text Files
 
